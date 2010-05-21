@@ -1,21 +1,5 @@
 (in-package :trivial-algebra)
 
-(defparameter *default-type* 'number)
-(defun in-type (num) (coerce num *default-type*))
-
-(defun square (x) (* x x))
-
-(defun random-value (max-value)
-  (- max-value (random (* max-value 2))))
-
- (defun ! (n &optional (acc 1))
-   (if (<= n 1)
-       acc
-       (! (- n 1) (* acc n))))
-
-(defun dim0 (array) (array-dimension array 0))
-(defun dim1 (array) (array-dimension array 1))
-
 (defun make-matrix (dimensions &optional (element-type *default-type*))
   (make-array dimensions :element-type element-type))
 
