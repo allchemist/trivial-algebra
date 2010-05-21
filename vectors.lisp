@@ -8,7 +8,10 @@
     `(dotimes (,i (length ,vector))
        ,@body)))
 
-(defun copy-vector (vector) (copy-seq vector))
+(defun copy-vector (vector &optional destination)
+  (if destination
+      (setf destination (copy-seq vector))
+      (copy-seq vector)))
 
 (defun map-vector (vector func)
   (do-vector (vector i)

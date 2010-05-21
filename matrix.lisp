@@ -8,6 +8,11 @@
 (defun random-value (max-value)
   (- max-value (random (* max-value 2))))
 
+ (defun ! (n &optional (acc 1))
+   (if (<= n 1)
+       acc
+       (! (- n 1) (* acc n))))
+
 (defun dim0 (array) (array-dimension array 0))
 (defun dim1 (array) (array-dimension array 1))
 
@@ -28,6 +33,7 @@
     `(dotimes (,i (dim0 ,matrix))
        (dotimes (,j (dim1 ,matrix))
 	 ,@body))))
+
 
 (defmacro do-row ((matrix &optional pos) &body body)
   (let ((i (or pos (gensym))))
@@ -91,6 +97,7 @@
 (defun make-random-matrix (dimensions &optional
 			   (element-type *default-type*)
 			   (rng #'(lambda (x)
+				    (declare (ignore x))
 				    (random 
 				     (case element-type
 				       (number 10)

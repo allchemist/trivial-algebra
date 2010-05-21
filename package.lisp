@@ -28,6 +28,7 @@
    :in-type
    :square
    :random-value
+   :!
    :make-matrix
    :do-matrix
    :do-row
